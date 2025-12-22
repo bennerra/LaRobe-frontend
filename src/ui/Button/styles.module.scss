@@ -1,0 +1,37 @@
+@use "@/styles/global.module.scss" as *;
+
+.button {
+  padding: 11px 24px;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  cursor: pointer;
+  border: none;
+  transition: all ease-in-out 0.3s;
+
+  & .isMobile {
+    padding: 7px 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: normal;
+  }
+}
+
+.accent {
+  color: $color-neutral;
+  background-color: $color-accent;
+
+  &:hover {
+    background-color: $color-accent-hover;
+  }
+}
+
+.primary {
+  color: $color-accent;
+  background-color: $color-neutral;
+
+  &:hover {
+    background-color: $color-neutral-hover;
+  }
+}

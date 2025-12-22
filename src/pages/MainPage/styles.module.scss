@@ -1,0 +1,165 @@
+@use "@/styles/global.module.scss" as *;
+
+.mainPage {
+  background-color: $color-accent;
+  height: 100vh;
+  min-height: 1060px;
+}
+
+.mainContainer {
+  position: relative;
+  max-width: 1600px;
+  margin: 0 auto;
+  height: 100%;
+  overflow: hidden;
+  max-height: 1077px;
+}
+
+.content {
+  @media(max-width: $md2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 100%;
+  }
+}
+
+.imgLeft {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 419px;
+  height: 628px;
+
+  & > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media(max-width: $max-width) {
+    width: 323px;
+    height: 484px;
+  }
+
+  @media(max-width: $md2) {
+    display: none;
+  }
+}
+
+.imgTop {
+  position: absolute;
+  top: 153px;
+  left: 138px;
+  width: 590px;
+  height: 738px;
+
+  & > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media(max-width: $max-width) {
+    top: 208px;
+    left: 77px;
+    width: 451px;
+    height: 564px;
+  }
+
+  @media(max-width: $md2) {
+    display: none;
+  }
+}
+
+.imgRight {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 603px;
+  height: 865px;
+
+  & > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media(max-width: $max-width) {
+    top: 258px;
+    width: 479px;
+    height: 687px;
+  }
+
+  @media(max-width: $md1) {
+    bottom: 0;
+    top: auto;
+  }
+
+  @media(max-width: $md2) {
+    display: none;
+  }
+}
+
+.info {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  display: flex;
+  flex-direction: column;
+  color: $color-neutral;
+  background-color: #3D0717;
+  padding: 56px 48px;
+  position: absolute;
+  top: 243px;
+  right: 24%;
+  max-width: 693px;
+
+  @media(max-width: $max-width) {
+    max-width: 503px;
+    top: 233px;
+    right: 25%;
+  }
+
+  @media(max-width: $md2) {
+    background-color: inherit;
+    max-width: 100%;
+    position: static;
+    padding: 0;
+    margin-top: 67px;
+    font-size: 16px;
+    line-height: normal;
+  }
+}
+
+.title {
+  font-family: 'Island Moments';
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  color: $color-neutral;
+  margin-bottom: 34px;
+  max-width: 344px;
+
+  @media(max-width: $md2) {
+    max-width: 221px;
+    font-size: 32px;
+    line-height: normal;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  margin-top: 54px;
+  align-self: flex-end;
+  gap: 8px;
+  cursor: pointer;
+
+  @media(max-width: $md2) {
+    margin-top: 89px;
+  }
+}
