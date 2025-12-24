@@ -1,0 +1,86 @@
+@use "@/styles/global.module.scss" as *;
+
+.registrationPage {
+  background-color: $color-neutral;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registrationForm {
+  background-color: $color-light;
+  padding: 45px 58px 32px 58px;
+  border-radius: 32px;
+  margin-top: 79px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 668px;
+  margin-bottom: 30px;
+
+  @media(max-width: $md2) {
+    width: 100%;
+    margin-top: 31px;
+    padding: 30px 15px 46px 15px;
+  }
+}
+
+.registrationTitle {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 51px;
+  color: $color-accent;
+  margin-bottom: 30px;
+
+  @media(max-width: $md2) {
+    font-size: 31px;
+    line-height: 38px;
+    margin-bottom: 14px;
+  }
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.actions {
+  margin-top: 27px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.linkContainer {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: $color-text;
+  text-align: center;
+}
+
+.link {
+  color: $color-accent;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  max-width: 800px;
+}
+
+.modalText {
+  white-space: pre-line;
+  font-size: 18px;
+  line-height: 21px;
+}

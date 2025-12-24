@@ -1,0 +1,13 @@
+@use "@/styles/global.module.scss" as *;
+
+.header {
+  width: 100%;
+  background-color: $color-accent;
+  padding: 24px 0;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

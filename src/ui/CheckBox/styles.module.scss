@@ -1,0 +1,39 @@
+@use "@/styles/global.module.scss" as *;
+
+.appCheckbox {
+  position: relative;
+  color: $color-text;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.appCheckboxInput {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+
+  &:checked + .appCheckboxBox {
+    border-radius: 3px;
+    background-color: $color-light;
+    background-image: url("@/assets/images/checked.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 5px;
+    background-position: center;
+  }
+}
+
+.appCheckboxBox {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid $color-text-secondary;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.appCheckboxLabel {
+  font-size: 16px;
+}

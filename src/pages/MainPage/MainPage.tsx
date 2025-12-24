@@ -1,4 +1,4 @@
-import { MainPageHeader } from "@/components/MainPage/MainPageHeader/MainPageHeader";
+import { MainPageHeader } from "@/components/MainPageHeader/MainPageHeader";
 import main1 from "@/assets/images/main1.png";
 import main2 from "@/assets/images/main2.png";
 import main3 from "@/assets/images/main3.png";

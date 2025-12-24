@@ -1,0 +1,94 @@
+@use "@/styles/global.module.scss" as *;
+
+.select {
+    position: relative;
+    width: 100%;
+}
+
+.selectBox {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background-color: $color-light;
+  color: $color-text;
+  border: 1px solid $color-text-secondary;
+  z-index: 10;
+}
+
+.selectLabel {
+  color: $color-text;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.selectIconWrapper {
+  svg {
+    width: 24px;
+    height: 24px;
+    color: $color-light;
+  }
+}
+
+.selectOptions {
+  max-height: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  top: 85%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: $color-light;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: $color-text;
+  border: 1px solid $color-text-secondary;
+  font-weight: 300;
+}
+
+.optionsOpen {
+  max-height: 100vh;
+  visibility: visible;
+  opacity: 1;
+}
+
+.selectWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px 8px 24px 24px;
+}
+
+.selectOptionWrapper {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &:hover {
+    .select__option {
+      color: $color-text;
+    }
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: $color-light;
+    margin-right: 16px;
+  }
+}
+
+.selectOption {
+  font-size: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.selectedOption {
+  color: $color-text;
+}
