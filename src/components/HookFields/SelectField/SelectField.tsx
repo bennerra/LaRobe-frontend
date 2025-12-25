@@ -26,10 +26,10 @@ export const SelectField: FC<Props> = ({ name, options, rules, ...props }) => {
           {...field}
           {...props}
           selectedOption={
-            options.find((option) => option.name === field.value) || null
+            options.find((option) => option.id === field.value) || null
           }
           onSelect={(option) => {
-            field.onChange(option.name);
+            field.onChange(option.id);
           }}
         />
       )}

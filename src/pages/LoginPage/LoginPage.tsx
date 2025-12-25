@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 
 import { LoginHeader } from "@/components/LoginHeader/LoginHeader";
 import { Container } from "@/layoutes/Container/Container";
@@ -7,7 +7,7 @@ import { TextField } from "@/components/HookFields/TextField/TextField";
 import {
   AuthFormConfig,
   AuthFormFieldsKeys,
-  FormData,
+  SignInFormData,
 } from "@/pages/LoginPage/constants";
 import { PasswordField } from "@/components/HookFields/PasswordField/PasswordField";
 import { Button } from "@/ui/Button/Button";
@@ -17,6 +17,8 @@ import { AuthScheme } from "@/constants/AuthScheme";
 import { MessageModal } from "@/ui/MessageModal/MessageModal";
 
 import styles from "./styles.module.scss";
+import {useSigninMutation} from "@/store/api/authApi";
+import {Storage} from "@/constants/storage";
 
 export const LoginPage = () => {
   const methods = useForm({
@@ -27,13 +29,30 @@ export const LoginPage = () => {
   const [errorText, setErrorText] = useState("");
   const errors = formState.errors;
   const isError = !!Object.keys(errors).length;
-
+  const [register] = useSigninMutation();
   const handleOpenModal = () => {
     setIsOpenModal((prev) => !prev);
   };
 
-  const onSubmit = (data: FormData) => {
-    console.log(data);
+  useEffect(() => {
+    if (localStorage.getItem(Storage.token)) {
+      window.location.href = AppRoutes.PROFILE;
+    }
+  }, []);
+
+  const onSubmit = async (data: SignInFormData) => {
+    try {
+
+      const result = await register(data).unwrap()
+      if (result && result.token) {
+        localStorage.setItem(Storage.token, result.token);
+        window.location.href = AppRoutes.PROFILE;
+      }
+    } catch (e) {
+      setErrorText("Ошибка! Попробуйте ещё раз, но позже.");
+      handleOpenModal();
+    }
+
   };
 
   const checkError = () => {

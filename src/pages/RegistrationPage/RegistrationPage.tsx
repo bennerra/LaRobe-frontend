@@ -1,35 +1,36 @@
-import { FormProvider, useForm } from "react-hook-form";
-import { useState } from "react";
-import { FormData } from "@/pages/LoginPage/constants";
-import { Container } from "@/layoutes/Container/Container";
-import { TextField } from "@/components/HookFields/TextField/TextField";
-import { PasswordField } from "@/components/HookFields/PasswordField/PasswordField";
-import { Button } from "@/ui/Button/Button";
-import { Link } from "react-router-dom";
-import { AppRoutes } from "@/constants/paths";
-import { MessageModal } from "@/ui/MessageModal/MessageModal";
+import {Controller, FormProvider, useForm} from "react-hook-form";
+import {useEffect, useState} from "react";
 import {
   contractText,
+  FormData,
   policyText,
   RegistrationFormConfig,
   RegistrationFormFieldsKeys,
-  SexVariantsObject,
+  SexVariantsObject
 } from "@/pages/RegistrationPage/constants";
-import { RegistrationScheme } from "@/constants/RegistrationScheme";
-import { RegistrationHeader } from "@/components/RegistrationHeader/RegistrationHeader";
-import { SelectField } from "@/components/HookFields/SelectField/SelectField";
-import { PhoneNumberField } from "@/components/HookFields/PhoneNumberField/PhoneNumberField";
-import { EmailField } from "@/components/HookFields/EmailField/TextField";
-import { Checkbox } from "@/ui/CheckBox/CheckBox";
-import { Modal } from "@/ui/Modal";
-
+import {Container} from "@/layoutes/Container/Container";
+import {TextField} from "@/components/HookFields/TextField/TextField";
+import {PasswordField} from "@/components/HookFields/PasswordField/PasswordField";
+import {Button} from "@/ui/Button/Button";
+import {Link} from "react-router-dom";
+import {AppRoutes} from "@/constants/paths";
+import {MessageModal} from "@/ui/MessageModal/MessageModal";
+import {RegistrationScheme} from "@/constants/RegistrationScheme";
+import {RegistrationHeader} from "@/components/RegistrationHeader/RegistrationHeader";
+import {SelectField} from "@/components/HookFields/SelectField/SelectField";
+import {PhoneNumberField} from "@/components/HookFields/PhoneNumberField/PhoneNumberField";
+import {EmailField} from "@/components/HookFields/EmailField/TextField";
+import {Checkbox} from "@/ui/CheckBox/CheckBox";
+import {Modal} from "@/ui/Modal";
+import {Storage} from "@/constants/storage";
 import styles from "./styles.module.scss";
+import {useSignupMutation} from "@/store/api/authApi";
 
 export const RegistrationPage = () => {
   const methods = useForm({
     mode: "onSubmit",
   });
-  const { handleSubmit, formState } = methods;
+  const {handleSubmit, formState} = methods;
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [errorText, setErrorText] = useState("");
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -37,6 +38,13 @@ export const RegistrationPage = () => {
   const [isOpenContractModal, setIsOpenContractModal] = useState(false);
   const errors = formState.errors;
   const isError = !!Object.keys(errors).length;
+  const [register] = useSignupMutation();
+
+  useEffect(() => {
+    if (localStorage.getItem(Storage.token)) {
+      window.location.href = AppRoutes.PROFILE;
+    }
+  }, []);
 
   const handleOpenModal = () => {
     setIsOpenModal((prev) => !prev);
@@ -50,15 +58,33 @@ export const RegistrationPage = () => {
     setIsOpenContractModal((prev) => !prev);
   };
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     if (!isConfirmed) {
       setErrorText("Согласие на обработку персональных данных обязательно");
       handleOpenModal();
 
       return;
     }
+    const phone_number = data[RegistrationFormFieldsKeys.PHONE_NUMBER].replace(/\D/g, "");
+    if (phone_number.length != 11) {
+      setErrorText("Ваш номер телефона НЕВАЛИДЕН.");
+      handleOpenModal();
 
-    console.log(data);
+      return;
+    }
+    data[RegistrationFormFieldsKeys.PHONE_NUMBER] = phone_number
+    try {
+
+      const result = await register(data).unwrap()
+      if (result && result.token) {
+        localStorage.setItem(Storage.token, result.token);
+        window.location.href = AppRoutes.PROFILE;
+      }
+    } catch (e) {
+      setErrorText("Ошибка! Попробуйте ещё раз, но позже.");
+      handleOpenModal();
+    }
+
   };
 
   const checkError = () => {
@@ -80,7 +106,7 @@ export const RegistrationPage = () => {
 
   return (
     <div className={styles.registrationPage}>
-      <RegistrationHeader />
+      <RegistrationHeader/>
       <Container>
         <div className={styles.registrationForm}>
           <h2 className={styles.registrationTitle}>Регистрация</h2>
@@ -146,7 +172,7 @@ export const RegistrationPage = () => {
                 placeholder={
                   RegistrationFormConfig[
                     RegistrationFormFieldsKeys.PHONE_NUMBER
-                  ]
+                    ]
                 }
                 name={RegistrationFormFieldsKeys.PHONE_NUMBER}
                 rules={
@@ -160,6 +186,11 @@ export const RegistrationPage = () => {
                 }
                 rules={RegistrationScheme[RegistrationFormFieldsKeys.PASSWORD]}
               />
+              <Controller
+                name="date_of_birth"
+                render={({field}) => (
+                  <input type="date" {...field}/>
+                )}/>
               <Checkbox
                 label="Согласие на обработку персональных данных"
                 checked={isConfirmed}
@@ -172,7 +203,7 @@ export const RegistrationPage = () => {
                 Политика конфиденциальности
               </span>
               <div className={styles.actions}>
-                <Button type="submit" view="accent" text="Зарегистрироваться" />
+                <Button type="submit" view="accent" text="Зарегистрироваться"/>
                 <div className={styles.linkContainer}>
                   Уже есть аккаунт?{" "}
                   <Link to={AppRoutes.AUTH}>

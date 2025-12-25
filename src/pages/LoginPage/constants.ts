@@ -1,5 +1,5 @@
 export const enum AuthFormFieldsKeys {
-  LOGIN = "login",
+  LOGIN = "username",
   PASSWORD = "password",
 }
 
@@ -8,7 +8,7 @@ export const AuthFormConfig = {
   [AuthFormFieldsKeys.PASSWORD]: "Пароль",
 };
 
-export type FormData = {
+export type SignInFormData = {
   [AuthFormFieldsKeys.LOGIN]: string;
   [AuthFormFieldsKeys.PASSWORD]: string;
 };

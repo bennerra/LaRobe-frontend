@@ -1,20 +1,21 @@
 import { Option } from "@/ui/Select/type";
 
 export const enum RegistrationFormFieldsKeys {
-  LOGIN = "login",
+  LOGIN = "username",
   NICKNAME = "nickname",
   FIRST_NAME = "first_name",
   LASTNAME = "last_name",
   PATRONYMIC = "patronymic",
   SEX = "sex",
   EMAIL = "email",
-  PHONE_NUMBER = "phone_number",
+  PHONE_NUMBER = "phone",
   PASSWORD = "password",
+  DATE_OF_BIRTH = "date_of_birth",
 }
 
 export const RegistrationFormConfig = {
-  [RegistrationFormFieldsKeys.LOGIN]: "Логин",
-  [RegistrationFormFieldsKeys.NICKNAME]: "Никнейм",
+  [RegistrationFormFieldsKeys.LOGIN]: "Логин (Его видите только Вы)",
+  [RegistrationFormFieldsKeys.NICKNAME]: "Имя пользователя (Публичное)",
   [RegistrationFormFieldsKeys.FIRST_NAME]: "Имя",
   [RegistrationFormFieldsKeys.LASTNAME]: "Фамилия",
   [RegistrationFormFieldsKeys.PATRONYMIC]: "Отчество",
@@ -22,6 +23,7 @@ export const RegistrationFormConfig = {
   [RegistrationFormFieldsKeys.EMAIL]: "Email",
   [RegistrationFormFieldsKeys.PHONE_NUMBER]: "Номер телефона",
   [RegistrationFormFieldsKeys.PASSWORD]: "Пароль",
+  [RegistrationFormFieldsKeys.DATE_OF_BIRTH]: "Дата рождения"
 };
 
 export type FormData = {
@@ -34,12 +36,12 @@ export type FormData = {
   [RegistrationFormFieldsKeys.EMAIL]: string;
   [RegistrationFormFieldsKeys.PHONE_NUMBER]: string;
   [RegistrationFormFieldsKeys.PASSWORD]: string;
+  [RegistrationFormFieldsKeys.DATE_OF_BIRTH]: string;
 };
 
 export const SexVariantsObject: Option[] = [
   { id: "male", name: "Мужчина" },
   { id: "female", name: "Женщина" },
-  { id: "unchecked", name: "Не указан" },
 ];
 
 export const policyText = `
