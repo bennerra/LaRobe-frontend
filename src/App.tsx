@@ -4,7 +4,7 @@ import { MainPage } from "@/pages/MainPage/MainPage";
 import { AppRoutes } from "@/constants/paths";
 import { LoginPage } from "@/pages/LoginPage/LoginPage";
 import { RegistrationPage } from "@/pages/RegistrationPage/RegistrationPage";
-import {ProfilePage} from "@/pages/ProfilePage/ProfilePage";
+import { ProfilePage } from "@/pages/ProfilePage/ProfilePage";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
       <Route path={AppRoutes.MAIN} element={<MainPage />} />
       <Route path={AppRoutes.AUTH} element={<LoginPage />} />
       <Route path={AppRoutes.REGISTRATION} element={<RegistrationPage />} />
-      <Route path={AppRoutes.PROFILE} element={<ProfilePage/>}/>
+      <Route path={AppRoutes.PROFILE} element={<ProfilePage isOwner />} />
     </Routes>
   );
 };

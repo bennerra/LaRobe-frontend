@@ -1,6 +1,6 @@
-import {BaseQueryArg, createApi, EndpointBuilder, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {Storage} from "@/constants/storage";
-import {config} from "@/constants/envs";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Storage } from "@/constants/storage";
+import { config } from "@/constants/envs";
 
 interface SignINRequest {
   username: string;
@@ -31,17 +31,27 @@ interface SignUPResponse extends SignUPBase {
   token: string;
 }
 
+interface UserRequest {
+  id?: string;
+}
+
+interface UserResponse {
+  about_me: string;
+  avatar: string;
+  banner_url: string;
+}
+
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     baseUrl: `${config.apiUrl}`,
     prepareHeaders: (headers) => {
-      const token = localStorage.getItem(Storage.token)
+      const token = localStorage.getItem(Storage.token);
       if (token) {
-        headers.set("Authorization", `Token ${token}`)
+        headers.set("Authorization", `Token ${token}`);
       }
-      return headers
-    }
+      return headers;
+    },
   }),
   tagTypes: ["Auth"],
   endpoints: (builder) => ({
@@ -49,28 +59,25 @@ export const authApi = createApi({
       query: (credentials) => ({
         url: "signup/",
         method: "POST",
-        body: credentials
+        body: credentials,
       }),
-      invalidatesTags: ["Auth"]
+      invalidatesTags: ["Auth"],
     }),
     signin: builder.mutation<SignINResponse, SignINRequest>({
       query: (credentials) => ({
         url: "signin/",
         method: "POST",
-        body: credentials
-      })
+        body: credentials,
+      }),
     }),
-    profile: builder.mutation({
+    profile: builder.mutation<UserResponse, UserRequest | null>({
       query: () => ({
         url: "profile",
-        method: "GET"
-      })
-    })
-  })
-})
+        method: "GET",
+      }),
+    }),
+  }),
+});
 
-export const {
-  useSignupMutation,
-  useSigninMutation,
-  useProfileMutation
-} = authApi;
+export const { useSignupMutation, useSigninMutation, useProfileMutation } =
+  authApi;

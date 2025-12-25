@@ -1,0 +1,197 @@
+@use "@/styles/global.module.scss" as *;
+
+.profilePage {
+  background-color: $color-neutral;
+  min-height: 100vh;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 142px;
+  background: linear-gradient(90deg, #FFC2BC 0%, #CC67AA 100%);
+  max-width: 1400px;
+  margin: 12px auto 24px;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+
+  @media(max-width: $md2) {
+    gap: 16px;
+  }
+}
+
+.profileInfo {
+  display: flex;
+  gap: 37px;
+
+  @media(max-width: $md2) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.photo {
+  width: 171px;
+  height: 202px;
+  background-color: $color-bg-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 5;
+  }
+}
+
+.photoIcon {
+  width: 52px;
+  height: 52px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.infoText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: $color-text;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  max-width: 607px;
+
+  @media(max-width: $md2) {
+    max-width: 100%;
+  }
+}
+
+.infoName {
+  font-size: 32px;
+  line-height: 38px;
+}
+
+.description {
+  font-size: 21px;
+  line-height: 25px;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: flex-start;
+}
+
+.reviewTitle {
+  position: relative;
+  display: inline-block;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  color: $color-accent;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $color-accent;
+  }
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+
+  @media(max-width: $md2) {
+    gap: 12px;
+  }
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: $color-text;
+  font-family: 'Roboto';
+  font-style: normal;
+}
+
+.reviewTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviewDate {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.reviewStars {
+  display: flex;
+  align-items: center;
+}
+
+.reviewName {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.reviewDescription {
+  max-width: 586px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.editButton {
+  cursor: pointer;
+  width: 68px;
+  height: 68px;
+  border-radius: 100%;
+  background-color: $color-text;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.applyEditButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
