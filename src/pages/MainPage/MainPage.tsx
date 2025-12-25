@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 import { MainPageHeader } from "@/components/MainPageHeader/MainPageHeader";
 import main1 from "@/assets/images/main1.png";
 import main2 from "@/assets/images/main2.png";
 import main3 from "@/assets/images/main3.png";
 import ArrowLink from "@/assets/images/arrowLink.svg";
+import { AppRoutes } from "@/constants/paths";
 
 import styles from "./styles.module.scss";
 
@@ -28,10 +31,12 @@ export const MainPage = () => {
               гардероб для ваших самых важных «сегодня». От легкого дня до
               блестящего вечера. Ваша история начинается здесь.
             </p>
-            <div className={styles.link}>
-              <div>Перейти к каталогу</div>
-              <ArrowLink />
-            </div>
+            <Link to={AppRoutes.CATALOG}>
+              <div className={styles.link}>
+                <div>Перейти к каталогу</div>
+                <ArrowLink />
+              </div>
+            </Link>
           </div>
         </div>
       </div>

@@ -11,11 +11,9 @@
   transition: all ease-in-out 0.3s;
   width: max-content;
 
-  & .isMobile {
-    padding: 7px 12px;
-    border-radius: 6px;
-    font-size: 16px;
-    line-height: normal;
+  @media(max-width: $md2) {
+    padding: 4px 14px;
+    font-size: 14px;
   }
 }
 
