@@ -6,6 +6,7 @@ import main2 from "@/assets/images/main2.png";
 import main3 from "@/assets/images/main3.png";
 import ArrowLink from "@/assets/images/arrowLink.svg";
 import { AppRoutes } from "@/constants/paths";
+import { Footer } from "@/components/Footer/Footer";
 
 import styles from "./styles.module.scss";
 
@@ -40,6 +41,7 @@ export const MainPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

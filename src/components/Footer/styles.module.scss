@@ -1,0 +1,21 @@
+@use "@/styles/global.module.scss" as *;
+
+.footer {
+  width: 100%;
+  background-color: $color-accent;
+  padding: 24px 0;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.copyright, .aboutLink {
+  font-size: 18px;
+  color: $color-neutral;
+}
+
+.aboutLink {
+  text-decoration: underline;
+}

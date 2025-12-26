@@ -1,6 +1,7 @@
 @use "@/styles/global.module.scss" as *;
 
 .loginPage {
+  width: 100%;
   background-color: $color-neutral;
   min-height: 100vh;
   display: flex;
@@ -9,6 +10,7 @@
 }
 
 .loginForm {
+  margin: 0 auto;
   background-color: $color-light;
   padding: 45px 58px 32px 58px;
   border-radius: 32px;

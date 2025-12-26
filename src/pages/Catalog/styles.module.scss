@@ -5,6 +5,15 @@
   min-height: 100vh;
   font-family: 'Roboto';
   font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.catalog {
+  width: 100%;
 }
 
 .title {
@@ -141,6 +150,7 @@
   align-items: center;
   gap: 16px;
   justify-content: flex-end;
+  margin-bottom: 30px;
 }
 
 .pageButton {
