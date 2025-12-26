@@ -17,7 +17,7 @@ export const CatalogHeader = () => {
               <LogoXS />
             </div>
           </Link>
-          <Link to={AppRoutes.CATALOG}>
+          <Link to={AppRoutes.PROFILE}>
             <Button text="Личный кабинет" view="primary" />
           </Link>
         </div>

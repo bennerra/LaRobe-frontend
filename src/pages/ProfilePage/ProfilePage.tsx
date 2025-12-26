@@ -5,18 +5,16 @@ import { useProfileMutation } from "@/store/api/authApi";
 import { ProfileHeader } from "@/components/ProfileHeader/ProfileHeader";
 import { Container } from "@/layoutes/Container/Container";
 import PhotoIcon from "@/assets/images/photo.svg";
-import StarIcon from "@/assets/images/star.svg";
 import PencilIcon from "@/assets/images/pencil.svg";
 import { Storage } from "@/constants/storage";
 import { TextareaField } from "@/components/HookFields/TextareaField";
 import { Button } from "@/ui/Button/Button";
-import { AppRoutes } from "@/constants/paths";
 import { Modal } from "@/ui/Modal";
+import { ReviewList } from "@/components/ReviewList/ReviewList";
 import { FileInput } from "@/ui/FileInput/FileInput";
+import { AppRoutes } from "@/constants/paths";
 
 import styles from "./styles.module.scss";
-
-const RATING = 3;
 
 type Props = {
   isOwner?: boolean;
@@ -122,30 +120,7 @@ export const ProfilePage: FC<Props> = ({ isOwner = false }) => {
                   </div>
                 </div>
               </div>
-              <div className={styles.reviews}>
-                <div className={styles.reviewTitle}>Отзывы</div>
-                <div className={styles.reviewList}>
-                  <div className={styles.review}>
-                    <div className={styles.reviewTop}>
-                      <div className={styles.reviewDate}>24.10.24</div>
-                      <div className={styles.reviewStars}>
-                        {Array.from({ length: 5 }).map((_, i) => (
-                          <StarIcon
-                            key={i}
-                            style={{ fill: i < RATING ? "#FFCF0F" : "#8E8E8E" }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <div className={styles.reviewName}>Платье-сарафан</div>
-                    <div className={styles.reviewDescription}>
-                      Платье очень понравилось! Размер соответветствует
-                      размерной сетке. Цвет как на фото. Материал очень
-                      качественный. Берите, не пожалеете!
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <ReviewList />
             </div>
             {isOwner && (
               <>

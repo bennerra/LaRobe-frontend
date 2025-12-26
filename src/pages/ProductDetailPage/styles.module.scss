@@ -1,0 +1,130 @@
+@use "@/styles/global.module.scss" as *;
+
+.productDetailPage {
+  background-color: $color-neutral;
+  min-height: 100vh;
+  padding-bottom: 30px;
+  font-family: 'Inter';
+}
+
+.buttonRedirect {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: $color-text;
+  margin-bottom: 20px;
+  margin-top: 19px;
+}
+
+.productInfo {
+  display: flex;
+  gap: 42px;
+  margin-bottom: 42px;
+  align-items: flex-start;
+
+  @media(max-width: $md2) {
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 34px;
+  }
+}
+
+.productImage {
+  position: relative;
+  width: 431px;
+  aspect-ratio: 1 / 1.3;
+  background-color: $color-bg-secondary;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 5;
+  }
+
+  @media(max-width: $md1) {
+    width: 334px;
+  }
+
+  @media(max-width: $md1) {
+    width: 100%;
+  }
+}
+
+.photoIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.productText {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: 'Roboto';
+  font-style: normal;
+}
+
+.productTitle {
+  margin: 0;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  color: $color-text;
+  margin-bottom: 6px;
+
+  @media(max-width: $md2) {
+    font-size: 26px;
+    margin-bottom: 0;
+  }
+}
+
+.productStock {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+  color: $color-text-secondary;
+  margin-bottom: 7px;
+
+  @media(max-width: $md2) {
+    font-size: 16px;
+    margin-bottom: 6px;
+    line-height: normal;
+  }
+}
+
+.productRating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+
+  @media(max-width: $md2) {
+    margin-bottom: 6px;
+  }
+}
+
+.productDescription {
+  width: 100%;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: $color-text;
+  white-space: pre-line;
+
+  @media(max-width: $md1) {
+    font-size: 18px;
+  }
+
+  @media(max-width: $md2) {
+    font-size: 16px;
+    line-height: normal;
+  }
+}

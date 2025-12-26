@@ -1,0 +1,40 @@
+@use "@/styles/global.module.scss" as *;
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: $color-text;
+  font-family: 'Roboto';
+  font-style: normal;
+}
+
+.reviewTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reviewDate {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.reviewStars {
+  display: flex;
+  align-items: center;
+}
+
+.reviewName {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.reviewDescription {
+  max-width: 586px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
