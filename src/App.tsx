@@ -7,6 +7,7 @@ import { RegistrationPage } from "@/pages/RegistrationPage/RegistrationPage";
 import { ProfilePage } from "@/pages/ProfilePage/ProfilePage";
 import { Catalog } from "@/pages/Catalog/Catalog";
 import { ProductDetailPage } from "@/pages/ProductDetailPage/ProductDetailPage";
+import { About } from "@/pages/About/About";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route path={AppRoutes.PROFILE} element={<ProfilePage isOwner />} />
       <Route path={AppRoutes.CATALOG} element={<Catalog />} />
       <Route path={AppRoutes.PRODUCT_DETAIL} element={<ProductDetailPage />} />
+      <Route path={AppRoutes.ABOUT} element={<About />} />
     </Routes>
   );
 };

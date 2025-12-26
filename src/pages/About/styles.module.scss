@@ -1,0 +1,165 @@
+@use "@/styles/global.module.scss" as *;
+
+.aboutPage {
+  background-color: $color-neutral;
+  min-height: 100vh;
+  font-family: 'Roboto';
+  font-style: normal;
+  padding-bottom: 30px;
+  overflow: hidden;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Island Moments';
+  font-weight: 400;
+  color: $color-accent;
+  margin: 45px 0;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 37px;
+
+  @media(max-width: $md2) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.titleAccent {
+  font-size: 106px;
+  line-height: 122px;
+}
+
+.infoDesc {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: $color-text;
+  max-width: 927px;
+}
+
+.blockTitle {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 45px;
+  color: $color-accent;
+  margin: 0 auto;
+  margin-bottom: 76px;
+  text-align: center;
+
+  @media(max-width: $md2) {
+    margin-bottom: 18px;
+  }
+}
+
+.principleList {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-bottom: 73px;
+
+  @media(max-width: $md2) {
+    margin-bottom: 31px;
+  }
+}
+
+.principle {
+  display: flex;
+  align-items: flex-start;
+  gap: 37px;
+
+  &:nth-child(2) {
+    flex-direction: row-reverse;
+  }
+
+
+  @media(max-width: $md2) {
+    flex-direction: column;
+    gap: 16px;
+
+    &:nth-child(2) {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+}
+
+.principleImage {
+  width: 384px;
+  height: 461px;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.principleInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.principleTitle {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: $color-text;
+}
+
+.principleList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.principleItem {
+  position: relative;
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: $color-text;
+  max-width: 589px;
+  margin-left: 24px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: calc(100% + 7px);
+    width: 24px;
+    height: 24px;
+    background-image: url(@/assets/images/aboutMarker.svg);
+  }
+
+  @media(max-width: $md2) {
+    max-width: none;
+    width: 100%;
+  }
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: $color-text;
+}
+
+.contactValue {
+  font-weight: 600;
+}
