@@ -6,11 +6,13 @@ import LogoXS from "@/assets/images/logo-xs.svg";
 import { Button } from "@/ui/Button/Button";
 import { useResize } from "@/hooks/useResize";
 import { AppRoutes } from "@/constants/paths";
+import { Storage } from "@/constants/storage";
 
 import styles from "./styles.module.scss";
 
 export const MainPageHeader = () => {
   const { isScreenLg } = useResize();
+  const isAuth = !!localStorage.getItem(Storage.token);
 
   return (
     <Container>
@@ -21,10 +23,13 @@ export const MainPageHeader = () => {
           </div>
         </Link>
         <div className={styles.buttons}>
-          <Link to={AppRoutes.AUTH}>
-            <Button text="Войти" view={isScreenLg ? "primary" : "accent"} />
+          <Link to={isAuth ? AppRoutes.PROFILE : AppRoutes.AUTH}>
+            <Button
+              text={isAuth ? "Личный кабинет" : "Войти"}
+              view={isScreenLg || isAuth ? "primary" : "accent"}
+            />
           </Link>
-          {!isScreenLg && (
+          {!isScreenLg && !isAuth && (
             <Link to={AppRoutes.REGISTRATION}>
               <Button text="Регистрация" view="primary" />
             </Link>

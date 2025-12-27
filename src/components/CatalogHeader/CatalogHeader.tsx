@@ -4,10 +4,13 @@ import { Container } from "@/layoutes/Container/Container";
 import LogoXS from "@/assets/images/logo-xs.svg";
 import { Button } from "@/ui/Button/Button";
 import { AppRoutes } from "@/constants/paths";
+import { Storage } from "@/constants/storage";
 
 import styles from "./styles.module.scss";
 
 export const CatalogHeader = () => {
+  const isAuth = !!localStorage.getItem(Storage.token);
+
   return (
     <div className={styles.header}>
       <Container>
@@ -17,8 +20,8 @@ export const CatalogHeader = () => {
               <LogoXS />
             </div>
           </Link>
-          <Link to={AppRoutes.PROFILE}>
-            <Button text="Личный кабинет" view="primary" />
+          <Link to={isAuth ? AppRoutes.PROFILE : AppRoutes.AUTH}>
+            <Button text={isAuth ? "Личный кабинет" : "Войти"} view="primary" />
           </Link>
         </div>
       </Container>

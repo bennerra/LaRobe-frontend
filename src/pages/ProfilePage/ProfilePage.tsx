@@ -21,9 +21,7 @@ type Props = {
 };
 
 export const ProfilePage: FC<Props> = ({ isOwner = false }) => {
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
-  const [bannerUrl, setBannerUrl] = useState<string | null>(null);
-  const [aboutMe, setAboutMe] = useState<string | null>(null);
+  const [data, setData] = useState<any | null>(null);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
   const [isOpenBannerModal, setIsOpenBannerModal] = useState<boolean>(false);
   const [isOpenAvatarModal, setIsOpenAvatarModal] = useState<boolean>(false);
@@ -50,13 +48,13 @@ export const ProfilePage: FC<Props> = ({ isOwner = false }) => {
     }
     register(null).then((data) => {
       // @ts-ignore
-      setAboutMe(data.about_me);
-      // @ts-ignore
-      setAvatarUrl(data.avatar);
-      // @ts-ignore
-      setBannerUrl(data.banner_url);
+      setData(data);
     });
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem(Storage.token);
+  };
 
   return (
     <FormProvider {...methods}>
@@ -66,7 +64,7 @@ export const ProfilePage: FC<Props> = ({ isOwner = false }) => {
           <div className={styles.banner}>
             <img
               src={
-                bannerUrl ||
+                data?.data?.avatar ||
                 "https://avatars.mds.yandex.net/i?id=c9cece58e68292b06bebb3e016f48235_l-10701700-images-thumbs&n=13"
               }
               alt="banner"
@@ -97,14 +95,14 @@ export const ProfilePage: FC<Props> = ({ isOwner = false }) => {
                   )}
                   <img
                     src={
-                      avatarUrl ||
+                      data?.data?.banner_image ||
                       "https://i.pinimg.com/originals/c2/e4/ac/c2e4ac180e9de04d53b925ac2b6573a9.jpg"
                     }
                     alt="avatar"
                   />
                 </div>
                 <div className={styles.infoText}>
-                  <div className={styles.infoName}>Фамилия Имя</div>
+                  <div className={styles.infoName}>{data?.data?.nickname}</div>
                   <div className={styles.description}>
                     {isEditMode ? (
                       <TextareaField
@@ -120,6 +118,7 @@ export const ProfilePage: FC<Props> = ({ isOwner = false }) => {
                   </div>
                 </div>
               </div>
+              <Button onClick={logout} view="accent" text="Выйти" />
               <ReviewList />
             </div>
             {isOwner && (
