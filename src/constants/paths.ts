@@ -5,7 +5,7 @@ export const enum AppRoutes {
   PROFILE = "/profile",
   ABOUT = "/about",
   CATALOG = "/catalog",
-  PRODUCT_DETAIL = "/product/:id",
+  PRODUCT_DETAIL = "/product/:slug",
   NOT_FOUND = "*",
 }
 

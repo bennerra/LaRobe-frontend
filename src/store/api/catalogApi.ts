@@ -53,7 +53,15 @@ export const catalogApi = createApi({
         };
       },
     }),
+    getProduct: builder.query<any, { slug: string }>({
+      query: (params) => {
+        return {
+          url: `products/${params.slug}`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetProductsQuery } = catalogApi;
+export const { useGetProductsQuery, useGetProductQuery } = catalogApi;
